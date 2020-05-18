@@ -22,7 +22,8 @@ RUN apt-get install -y --no-install-recommends \
         sudo \
         wget \
         tmate \
-        cron
+        cron \
+        inetutils-ping
 
 # Install dependency components.
 RUN apt-get install -y \
