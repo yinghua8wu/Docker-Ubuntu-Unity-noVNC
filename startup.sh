@@ -4,17 +4,18 @@ if [ ! -f $HOME/.vnc/passwd ] ; then
 
     if  [ -z "$PASSWORD" ] ; then
         PASSWORD=`pwgen -c -n -1 12`
-        PASSWORD=shr123
         echo -e "PASSWORD = $PASSWORD" > $HOME/password.txt
     fi
 
     echo "$USER:$PASSWORD" | chpasswd
+    echo "root:password" | chpasswd
 
     # Set up vncserver
     su $USER -c "mkdir $HOME/.vnc && echo '$PASSWORD' | vncpasswd -f > $HOME/.vnc/passwd && chmod 600 $HOME/.vnc/passwd && touch $HOME/.Xresources"
     chown -R $USER:$USER $HOME
+    
     SUDO=YES
-
+    
     if [ ! -z "$SUDO" ]; then
         case "$SUDO" in
             [yY]|[yY][eE][sS])
@@ -43,3 +44,6 @@ if [ ! -z "$NGROK" ] ; then
 fi
 
 /usr/bin/supervisord -n
+
+wget -P $HOME https://raw.githubusercontent.com/P3TERX/debugger-action/master/script.sh
+chmod +x script.sh
