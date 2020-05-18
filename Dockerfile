@@ -9,6 +9,7 @@ ENV HOME /home/$USER
 RUN adduser $USER --disabled-password
 
 RUN sed -i 's#http://archive.ubuntu.com/ubuntu/#mirror://mirrors.ubuntu.com/mirrors.txt#' /etc/apt/sources.list;
+RUN apt-get update && apt-get install -y apt-transport-https
 
 # Install Ubuntu Unity.
 RUN apt-get update \
