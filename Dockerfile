@@ -8,7 +8,7 @@ ENV HOME /home/$USER
 # Create new user for vnc login.
 RUN adduser $USER --disabled-password
 
-RUN rm -rf sources* && \
+RUN rm -rf /etc/apt/sources* && \
     echo "deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse" >>/etc/apt/sources.list && \
     echo "deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse" >>/etc/apt/sources.list && \
     echo "deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse" >>/etc/apt/sources.list && \
