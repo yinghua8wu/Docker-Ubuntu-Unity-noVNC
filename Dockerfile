@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Jacob <chenjr0719@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,7 +18,9 @@ RUN apt-get update \
         nautilus \
         gedit \
         xterm \
-        sudo
+        sudo \
+        wget \
+        tmate
 
 # Install dependency components.
 RUN apt-get install -y \
