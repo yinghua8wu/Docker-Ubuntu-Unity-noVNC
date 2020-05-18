@@ -8,8 +8,11 @@ ENV HOME /home/$USER
 # Create new user for vnc login.
 RUN adduser $USER --disabled-password
 
+RUN sed -i 's#http://archive.ubuntu.com/ubuntu/#mirror://mirrors.ubuntu.com/mirrors.txt#' /etc/apt/sources.list;
+
 # Install Ubuntu Unity.
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
         ubuntu-desktop \
         unity-lens-applications \
         gnome-panel \
