@@ -8,9 +8,10 @@ ENV HOME /home/$USER
 # Create new user for vnc login.
 RUN adduser $USER --disabled-password
 
+RUN apt-get update && apt-get install -y apt-transport-https
+
 # Install Ubuntu Unity.
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+RUN apt-get install -y --no-install-recommends \
         ubuntu-desktop \
         unity-lens-applications \
         gnome-panel \
@@ -20,7 +21,8 @@ RUN apt-get update \
         xterm \
         sudo \
         wget \
-        tmate
+        tmate \
+        cron
 
 # Install dependency components.
 RUN apt-get install -y \
