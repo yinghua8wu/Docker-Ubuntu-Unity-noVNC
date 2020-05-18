@@ -8,7 +8,8 @@ ENV HOME /home/$USER
 # Create new user for vnc login.
 RUN adduser $USER --disabled-password
 
-RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt-get update || apt-get update
+RUN apt-get install -y apt-transport-https
 
 # Install Ubuntu Unity.
 RUN apt-get install -y --no-install-recommends \
